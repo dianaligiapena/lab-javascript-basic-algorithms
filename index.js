@@ -1,132 +1,387 @@
-// Iteration 1: Names and Input
-const hacker1 = 'Abiel';
-console.log (`The driver's name is ${hacker1}.`);
+// Iteration #1: Find the maximum - done
+function maxOfTwoNumbers(a,b) {
+  if (a > b) {
+    return a;
+  }
+  else if (a < b) {
+    return b;
+  }
+  else {
+    return a;
+  }
+}
 
-const hacker2 = 'Charlie';
-console.log (`The navigator's name is ${hacker2}.`);
+let biggestNum = maxOfTwoNumbers(2,3);
+console.log ("The biggest number is", biggestNum);
 
-// Iteration 2: Conditionals
-if (hacker1.length > hacker2.length) {
-  console.log (`The driver has the longest name, it has ${hacker1.length} characters.`)
+
+
+// Iteration #2: Find longest word - done
+const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+
+function findLongestWord(someArray) {
+  if (someArray.length == 0) {
+      return null;
+  }
+  else if (someArray.length == 1) {
+      return someArray[0];
+  }
+  else {
+    let winnerLength = 0;
+    let winnerIndex = 0;
+    
+    for (let i = 0; i < someArray.length; i++) {
+      if (someArray[i].length > winnerLength) {
+        winnerIndex = i;
+        winnerLength = someArray[i].length;
+      }
     }
-else if (hacker2.length > hacker1.length) {
-  console.log (`The navigator has the longest name, it has ${hacker2.length} characters.`)
-}
-else {
-  console.log (`Wow, you both have equally long names, ${hacker1.length}.`)
+
+    return someArray[winnerIndex];
+  }
 }
 
-// Iteration 3: Loops
-//3.1 - print driver's name, sep by space, capital letters
+let longestWord = findLongestWord (words);
+console.log ("The longest word is", longestWord);
 
-let printDriver = ``;
 
-for (let i = 0; i < hacker1.length; i++) {
-  printDriver += `${hacker1[i]} `;
+// Iteration #3: Calculate the sum - done
+const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
+
+function sumNumbers(myArray) {
+  if (myArray.length == 0) {return 0;}
+  else {
+    let mySum = 0;
+    for (i = 0; i < myArray.length; i++) {
+      mySum += myArray[i];
+    }
+    return mySum;
+  }
 }
 
-console.log (printDriver.toUpperCase());
+let numbersSum = sumNumbers (numbers);
+console.log (numbersSum);
 
-//3.2 - print navigator's name, in reverse order
-let printNav = ``;
+// Iteration #3.1 Bonus: - done
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10, ];
 
-for (let j = hacker2.length - 1; j >= 0; j--) {
-  printNav += `${hacker2[j]}`;
+function sum(myArray) {
+  if (myArray.length == 0) {return 0;}
+  else {
+    let mySum = 0;
+    for (i = 0; i < myArray.length; i++) {
+      if (typeof myArray[i] === "number") {
+        mySum += myArray[i];
+      }
+      else if (typeof myArray[i] === "string") {
+        mySum += myArray[i].length;
+      }
+      else if (typeof myArray[i] === "boolean") {
+        if (myArray[i] === true) {
+        mySum += 1;}
+      }
+      else {throw new Error('Exception message');} 
+    }
+    return mySum;
+  }
 }
 
-console.log (printNav.toLowerCase());
+const mixedSum = sum(mixedArr);
+console.log (mixedSum);
 
-//3.3 lexigographic order of strings - I did a loop to verify the letters of their names one by one to decide who goes first
 
-let lettersNo; // maximum for the loop
 
-if (hacker1.length <= hacker2.length) {
-  lettersNo = hacker1.length;
+// Iteration #4: Calculate the average - done
+// Level 1: Array of numbers
+const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+
+/*numbersSum = sumNumbers (numbersAvg); // if i wanna use the function already iterated
+console.log (numbersSum);*/
+
+function averageNumbers(myArray) {
+  if (myArray.length === 0) {
+    return null;
+  }
+  else {
+    let anotherSum = 0;
+    for (i = 0; i < myArray.length; i++){
+      anotherSum += myArray[i];
+    }
+    
+    let avgNumber = anotherSum/myArray.length;
+    return avgNumber;
+  }
+
+
 }
-else {
-  lettersNo = hacker2.length;
-}
+
+const avg41 = averageNumbers (numbersAvg);
+console.log(`The average is ${avg41}.`);
+
+
+// Level 2: Array of strings - done
+const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+
+function averageWordLength(myArray) {
+  if (myArray.length === 0) {
+    return null;
+  }
+  else {
+    let anotherSum = 0;
+    for (i = 0; i < myArray.length; i++){
+      anotherSum += myArray[i].length;
+    }
+    
+    let avgNumber = anotherSum/myArray.length;
+    return avgNumber;
+  }
   
-let i = 1;
+}
 
-while (i <= lettersNo) { 
+const avg42 = averageWordLength (wordsArr);
+console.log(`The average is ${avg42}.`);
+
+// Bonus - Iteration #4.1 - done
+function avg(myArray) {
+  if (myArray.length === 0) {
+    return null;
+  }
+  else {
+    let mySum = 0;
+    for (i = 0; i < myArray.length; i++) {
+      if (typeof myArray[i] === "number") {
+        mySum += myArray[i];
+      }
+      else if (typeof myArray[i] === "string") {
+        mySum += myArray[i].length;
+      }
+      else if (typeof myArray[i] === "boolean") {
+        if (myArray[i] === true) {
+        mySum += 1;}
+      }
+      else {throw new Error('Exception message');} 
+    }
+    return mySum/myArray.length;
+  }
   
-  if (hacker1[i] < hacker2[i]) {
-   console.log (`The driver goes first.`);
-    break;
-  }
-
-  else if (hacker1[i] > hacker2[i]) {
-    console.log (`Yo, the navigator goes first definately.`);
-    break;
-  }
-
-  else if (hacker1 === hacker2) {
-    console.log (`What?! You both have the same name?`);
-    break;
-  }
-
-  i++;
 }
 
-//bonus1 - lorem ipsum 3 paragraphs - can also do with .include("et")
-const gen3paragr = 
-`Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut pulvinar tellus. Aenean convallis mattis lacus vel iaculis. Proin posuere mauris purus, nec laoreet purus fringilla at. Integer rutrum augue augue, in lobortis quam rhoncus et. Praesent facilisis turpis id enim blandit, sit amet elementum lacus luctus. Donec gravida massa sed velit imperdiet interdum. Sed quis quam urna. Nunc vestibulum, urna non tincidunt pharetra, arcu purus aliquet sem, quis volutpat neque dui a ligula.
+const avg43 = avg (mixedArr);
+console.log(`The average is ${avg43}.`);
 
-Suspendisse in semper urna. Proin est magna, condimentum eget nunc malesuada, hendrerit sagittis dui. Donec ut nibh arcu. Sed sit amet maximus ex. Phasellus bibendum turpis eget neque condimentum auctor. Sed vestibulum congue velit nec ultricies. Phasellus posuere eros sed felis imperdiet, nec cursus purus malesuada. Integer sit amet nulla et lacus condimentum posuere et quis eros. Curabitur ipsum nisl, varius nec sem nec, volutpat facilisis neque. Nulla sed turpis ac est elementum bibendum.
+// Iteration #5: Unique arrays - done
+const wordsUnique = [
+  'crab',
+  'poison',
+  'contagious',
+  'simple',
+  'bring',
+  'sharp',
+  'playground',
+  'poison',
+  'communion',
+  'simple',
+  'bring'
+];
 
-Nullam eu commodo augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus tincidunt odio quis urna laoreet, quis fermentum sapien viverra. Phasellus neque dolor, feugiat nec interdum in, blandit sit amet elit. Praesent vestibulum lorem et libero auctor pharetra. Nam scelerisque libero magna. Morbi pharetra gravida urna vel tincidunt. Pellentesque metus augue, egestas ut aliquet ac, tincidunt porttitor mi. Integer faucibus pellentesque congue. Nulla facilisi. Aliquam tristique ante a nibh tristique maximus. Pellentesque consectetur tempus malesuada. Nunc molestie risus in odio tincidunt, eu vulputate nulla mattis. Integer varius est sed lectus elementum, nec cursus mauris rutrum.`
+function uniquifyArray(someArray) {
+  if (someArray.length == 0) { 
+    return null;
+  }
+  else if (someArray.length == 1) { //if it has one word returns it the same
+    return someArray;
+  }
+    
+  else { //array has more than 1 word
+    let uniqueArray = someArray; // the array i want to return (unique); i initiliased with the first word
+    let i = 0;
 
-let count_words = 2; // variable to count words - i initiliased with 2 because it will not count the first and the last word
+    while (i < uniqueArray.length) {
+      if (uniqueArray.includes(uniqueArray[i],i+1) == true) {
+        uniqueArray.splice(uniqueArray.indexOf(uniqueArray[i], i+1), 1);
+      }
+      else {i++;}
+    }
+     
+    return uniqueArray;
+  }  
+}
+
+let newUniqueArray = uniquifyArray(wordsUnique);
+console.log (newUniqueArray);
+
+
+// Iteration #6: Find elements - done
+const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+const wordToBeFound = "subset";
+
+function doesWordExist(wordArray,wordSearched) {
+  if (wordArray.length == 0) {
+    return null;
+  }
+  else if (wordArray.length == 1 && wordArray[0] == wordSearched)
+  {
+    return true;
+  }
+  else {
+    if (wordArray.includes(wordSearched)) {return true;}
+    else {return false};
+  }
+}
+
+console.log(doesWordExist(wordsFind,wordToBeFound));
+
+
+
+// Iteration #7: Count repetition - done
+const wordsCount = [
+  'machine',
+  'matter',
+  'subset',
+  'trouble',
+  'starting',
+  'matter',
+  'eating',
+  'matter',
+  'truth',
+  'disobedience',
+  'matter'
+];
+const wordToFind = `banana`;
+
+function howManyTimes(wArray,wSearched) {
+  if (wArray.length == 0) {
+    return 0;
+  }
+  else {
+    let numberCount = 0;
+
+    let i = 0;
+    while (i < wArray.length) {
+      if (wArray.includes(wSearched,i+1) == true) {
+        wArray.splice(wArray.indexOf(wSearched, i+1), 1);
+        numberCount++;
+      }
+      else {i++;}
+    }
+    
+    return numberCount;
+  }
+}
+
+const countNo = howManyTimes(wordsCount,wordToFind);
+console.log(countNo);
+
+
+
+
+
+// Iteration #8: Bonus - done
+const myMatrix = [
+  [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
+  [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
+  [81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 3, 49, 13, 36, 65],
+  [52, 70, 95, 23, 4, 60, 11, 42, 69, 24, 68, 56, 1, 32, 56, 71, 37, 2, 36, 91],
+  [22, 31, 16, 71, 51, 67, 63, 89, 41, 92, 36, 54, 22, 40, 40, 28, 66, 33, 13, 80],
+  [24, 47, 32, 60, 99, 3, 45, 2, 44, 75, 33, 53, 78, 36, 84, 20, 35, 17, 12, 50],
+  [32, 98, 81, 28, 64, 23, 67, 10, 26, 38, 40, 67, 59, 54, 70, 66, 18, 38, 64, 70],
+  [67, 26, 20, 68, 2, 62, 12, 20, 95, 63, 94, 39, 63, 8, 40, 91, 66, 49, 94, 21],
+  [24, 55, 58, 5, 66, 73, 99, 26, 97, 17, 78, 78, 96, 83, 14, 88, 34, 89, 63, 72],
+  [21, 36, 23, 9, 75, 0, 76, 44, 20, 45, 35, 14, 0, 61, 33, 97, 34, 31, 33, 95],
+  [78, 17, 53, 28, 22, 75, 31, 67, 15, 94, 3, 80, 4, 62, 16, 14, 9, 53, 56, 92],
+  [16, 39, 5, 42, 96, 35, 31, 47, 55, 58, 88, 24, 0, 17, 54, 24, 36, 29, 85, 57],
+  [86, 56, 0, 48, 35, 71, 89, 7, 5, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58],
+  [19, 80, 81, 68, 5, 94, 47, 69, 28, 73, 92, 13, 86, 52, 17, 77, 4, 89, 55, 40],
+  [4, 52, 8, 83, 97, 35, 99, 16, 7, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66],
+  [88, 36, 68, 87, 57, 62, 20, 72, 3, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69],
+  [4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36],
+  [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16],
+  [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
+  [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
+];
+
+function greatestProduct(matrix) {
   
-for (let i = 0; i < gen3paragr.length; i++) {
-  if (gen3paragr[i] === ` `) {
-    count_words ++;
+  let maxArr = []; 
+  let maxPr = 1; 
+  
+  for (let x = 0; x < matrix.length; x++) { //loop that checks adjacent numbers on the rows of the matrix
+    let prArray = [];
+    
+    for (let y = 0; y < matrix.length; y++) {
+      
+      if (prArray.length < 3) {
+        prArray.push(matrix[x][y]);
+      }
+        
+      else if (prArray.length === 3) {
+        prArray.push(matrix[x][y]);
+        let newPr = prArray[0] * prArray[1] * prArray[2] * prArray[3];
+        if (newPr > maxPr) {
+          maxPr = newPr;
+          for (i=0;i<4;i++){maxArr[i]=prArray[i];}
+        }
+        prArray.shift();
+      }
+    }
   }
+
+    for (let y = 0; y < matrix.length; y++) { //loop that checks adjacent numbers on the columns of the matrix
+    let prArray = [];
+    
+    for (let x = 0; x < matrix.length; x++) {
+      
+      if (prArray.length < 3) {
+        prArray.push(matrix[x][y]);
+      }
+        
+      else if (prArray.length === 3) {
+        prArray.push(matrix[x][y]);
+        let newPr = prArray[0] * prArray[1] * prArray[2] * prArray[3];
+        if (newPr > maxPr) {
+          maxPr = newPr;
+          for (i=0;i<4;i++){maxArr[i]=prArray[i];}
+        }
+        prArray.shift();
+      }
+    }
+  }
+
+ /* let productObject = { //if to return two values
+    maximumProduct : `${maxPr}`,
+    maximumArray : `${maxArr}`,
+  } */
+  
+  return maxPr;
 }
 
-console.log (count_words); // count no of words
+console.log(greatestProduct(myMatrix));
 
-countLatinWord = 0; 
-
-for (let i = 0; i < gen3paragr.length; i++) {
-  let twoChar = `${gen3paragr[i]}` + `${gen3paragr[i+1]}`;
-  if (twoChar === `et`) {
-    countLatinWord ++;
-  }
+//product of diagonals - done
+princDiag = []; secondaryDiag = [];
+for (i=0;i<matrix.length;i++){
+  princDiag.push(matrix[i][i]); // principal diagonal
+  secondaryDiag.push(matrix[i][matrix.length - i - 1]); // secondary diagonal
 }
 
-console.log (countLatinWord); // print no of times the latin word 'et' appears;
-
-//bonus2:
-
-const phraseToCheck = `No 'x' in Nixon`; //the string to check if palindrome
+//just change with the previous code 
 
 
-//----BELOW: change the phrase to remain only with the letters
-let newPhraseToCheck = ``; //variable that stores the phrase with just the letters from it
 
-for (let j = 0; j < phraseToCheck.length; j++) {
-  if ( (phraseToCheck[j].toLowerCase()) != (phraseToCheck[j].toUpperCase() ) ) {
-    newPhraseToCheck += `${phraseToCheck[j].toLowerCase()}`;
-  }
-}
-
-console.log (newPhraseToCheck); // print to verify the variable we'll check below - just the letters
-
-
-//----BELOW: check if palindrom
-
-let valuePal = true;
-
-for (let i = 0; i < newPhraseToCheck.length/2; i++) {
-  if ( newPhraseToCheck[i] != newPhraseToCheck[newPhraseToCheck.length - i - 1] ) {
-    valuePal = false;
-    console.log ("It is not a palindrom")
-    break;
-  }
-}
-
-if (valuePal == true) {
-  console.log("It is a palindrom");
+// The following is required to make unit tests work.
+/* Environment setup. Do not modify the below code. */
+if (typeof module !== 'undefined') {
+  module.exports = {
+    maxOfTwoNumbers,
+    findLongestWord,
+    sumNumbers,
+    sum,
+    averageNumbers,
+    averageWordLength,
+    avg,
+    uniquifyArray,
+    doesWordExist,
+    howManyTimes,
+    greatestProduct
+  };
 }
